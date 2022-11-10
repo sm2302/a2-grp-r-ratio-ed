@@ -1,4 +1,4 @@
-#bertrand's paradox plot
+#bertrands paradox plot
 
 library(tidyverse)
 library(ggplot2)
@@ -10,11 +10,11 @@ x0=0; y0=0; #centre of circle
 
 #circle points
 k=seq(0,2*pi,len=200);
-xp=r*cos(k);
-yp=r*sin(k);
+xx=r*cos(k);
+yy=r*sin(k);
 
 #plotting the circle
-plot(x0+xp,y0+yp,type="l", col='black');
+plot(x0+xx,y0+yy,type="l", col='black');
 
 #angles of equilateral triangles
 thetaTri1=2*pi;
@@ -40,4 +40,4 @@ xChord1=x0+r*cos(thetaChord1);yChord1=x0+r*sin(thetaChord1);
 xChord2=x0+r*cos(thetaChord2);yChord2=x0+r*sin(thetaChord2);
 
 #plotting the chord
-lines(c(xChord1,xChord2),c(yChord1,yChord2),col='red');
+lines(c(xChord1,xChord2),c(yChord1,yChord2),col='red')
