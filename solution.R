@@ -61,9 +61,9 @@ pA <- ggplot() +
                col = "red3") +
   coord_equal()
 
-print(pA)
+print(pA + ggtitle("Method A: Random endpoint"))
 
-
+              
 # Method B......................................................................
 
 thetaB=2*pi*runif(numbLines); #choose angular component uniformly
@@ -107,7 +107,7 @@ pB <- ggplot() +
                col = "red3") +
   coord_equal()
 
-print(pB)
+print(pB + ggtitle("Method B: Random radial points"))
 
 
 # Method C.......................................................................
@@ -153,7 +153,7 @@ pC <- ggplot() +
                col = "red3") +
   coord_equal()
 
-print(pC)
+print(pC + ggtitle("Method C: Random midpoint"))
 
 
 ### References..................................................................
