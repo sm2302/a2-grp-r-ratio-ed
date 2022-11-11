@@ -1,6 +1,15 @@
-###References
-##https://en.wikipedia.org/wiki/Bertrand_paradox_(probability)
-##https://hpaulkeeler.com/the-bertrand-paradox/
+### References
+## https://en.wikipedia.org/wiki/Bertrand_paradox_(probability)
+## https://hpaulkeeler.com/the-bertrand-paradox/
+## https://github.com/hpaulkeeler/posts/blob/master/BertrandParadox/BertrandParadox.R
+
+# The value of probabilities of chords  being longer than 
+# the length of the side of equilateral triangle obtained by running the code are:
+# PA = 0.33
+# PB = 0.51
+# PC = 0.24
+# However there is a small change in values of probabilities for each running 
+# due to the chords being plotted randomly on the surface of the circle. 
 
 library(tidyverse)
 library(ggforce)
@@ -10,11 +19,6 @@ x0=0; y0=0; #center of disk
 r=1; #radius
 numbLines=100; #number of lines
 
-# Method A..........................................................................
-
-thetaA1=2*pi*runif(numbLines); #choose angular component uniformly
-thetaA2=2*pi*runif(numbLines); #choose angular component uniformly
-
 # Coordinates of equilateral triangle
 eqtri_df <- tibble(
   x    = c(0, sqrt(3) / 2, -sqrt(3) / 2),
@@ -22,6 +26,11 @@ eqtri_df <- tibble(
   xend = c(sqrt(3) / 2, -sqrt(3) / 2, 0),
   yend = c(-0.5, -0.5, 1)
 )
+
+# Method A..........................................................................
+
+thetaA1=2*pi*runif(numbLines); #choose angular component uniformly
+thetaA2=2*pi*runif(numbLines); #choose angular component uniformly
 
 # Coordinates of random chord
 
@@ -32,13 +41,15 @@ rdmchr_A <- tibble(
   yend = y0+r*sin(thetaA2)
 )
 # calculate probability that the chord is longer than a side of the triangle
+
+# Coordinates of random chord
 xA    = x0+r*cos(thetaA1)
 yA    = y0+r*sin(thetaA1)
 xAend = x0+r*cos(thetaA2)
 yAend = y0+r*sin(thetaA2)
 #length of triangle side
 lengthSide<-r*sqrt(3) 
-#lengths of the chord
+#lengths of the chords
 lengthA=sqrt((xA-xAend)^2+(yA-yAend)^2)
 #probability of chord being longer than triangle side
 probA=mean(lengthA>lengthSide) 
@@ -73,12 +84,17 @@ rdmchr_B <- tibble(
 )
 
 # calculate probability that the chord is longer than a side of the triangle
+
+# Coordinates of random chord
 xB    = x0+pB*cos_thetaB+qB*sin_thetaB
 yB    = y0+pB*sin_thetaB-qB*cos_thetaB
 xBend = x0+pB*cos_thetaB-qB*sin_thetaB
 yBend = y0+pB*sin_thetaB+qB*cos_thetaB
+#length of triangle side
 lengthSide<-r*sqrt(3)
+#lengths of the chords
 lengthB=sqrt((xB-xBend)^2+(yB-yBend)^2)
+#probability of chord being longer than triangle side
 probB=mean(lengthB>lengthSide)
 # Plot B
 pB <- ggplot() +
@@ -108,12 +124,17 @@ rdmchr_C <- tibble(
   yend = y0+pC*sin_thetaC+qC*cos_thetaC
 )
 # calculate probability that the chord is longer than a side of the triangle
+
+# Coordinates of random chord
 xC    = x0+pC*cos_thetaC+qC*sin_thetaC
 yC    = y0+pC*sin_thetaC-qC*cos_thetaC
 xCend = x0+pC*cos_thetaC-qC*sin_thetaC
 yCend = y0+pC*sin_thetaC+qC*cos_thetaC
+#length of triangle side
 lengthSide<-r*sqrt(3)
+#lengths of the chords
 lengthC=sqrt((xC-xCend)^2+(yC-yCend)^2)
+#probability of chord being longer than triangle side
 probC=mean(lengthC>lengthSide)
 
 # Plot C
