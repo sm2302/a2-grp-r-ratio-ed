@@ -10,11 +10,11 @@ library(tidyverse)
 library(ggforce)
 theme_set(theme_void()) 
 
-x0=0; y0=0; #center of disk
+x0=0; y0=0; #center of circle
 r=1; #radius
 numbLines=100; #number of lines
 
-# Coordinates of equilateral triangle
+#coordinates of equilateral triangle
 eqtri_df <- tibble(
   x    = c(0, sqrt(3) / 2, -sqrt(3) / 2),
   y    = c(1, -0.5, -0.5),
@@ -22,12 +22,13 @@ eqtri_df <- tibble(
   yend = c(-0.5, -0.5, 1)
 )
 
+
 # Method A......................................................................
 
 thetaA1=2*pi*runif(numbLines); #choose angular component uniformly
 thetaA2=2*pi*runif(numbLines); #choose angular component uniformly
 
-# Coordinates of random chords
+#coordinates of random chords
 rdmchr_A <- tibble(
   x    = x0+r*cos(thetaA1),
   y    = y0+r*sin(thetaA1),
@@ -35,9 +36,9 @@ rdmchr_A <- tibble(
   yend = y0+r*sin(thetaA2)
 )
 
-## calculate probability that the chord is longer than a side of the triangle
+## Calculate probability that the chord is longer than a side of the triangle
 
-# Coordinates of random chords
+#coordinates of random chords
 xA    = x0+r*cos(thetaA1);
 yA    = y0+r*sin(thetaA1);
 xAend = x0+r*cos(thetaA2);
@@ -62,6 +63,7 @@ pA <- ggplot() +
 
 print(pA)
 
+
 # Method B......................................................................
 
 thetaB=2*pi*runif(numbLines); #choose angular component uniformly
@@ -80,9 +82,9 @@ rdmchr_B <- tibble(
   yend = y0+pB*sin_thetaB+qB*cos_thetaB
 )
 
-## calculate probability that the chord is longer than a side of the triangle
+## Calculate probability that the chord is longer than a side of the triangle
 
-# Coordinates of random chord
+#coordinates of random chord
 xB    = x0+pB*cos_thetaB+qB*sin_thetaB;
 yB    = y0+pB*sin_thetaB-qB*cos_thetaB;
 xBend = x0+pB*cos_thetaB-qB*sin_thetaB;
@@ -107,7 +109,8 @@ pB <- ggplot() +
 
 print(pB)
 
-#Method C.......................................................................
+
+# Method C.......................................................................
 
 thetaC=2*pi*runif(numbLines); #choose angular component uniformly
 pC=r*sqrt(runif(numbLines)); #choose radial component
@@ -117,7 +120,7 @@ qC=sqrt(r^2-pC^2); #distance to circle edge (along line)
 sin_thetaC=sin(thetaC);
 cos_thetaC=cos(thetaC);
 
-#Coordinates of random chords
+#coordinates of random chords
 rdmchr_C <- tibble(
   x    = x0+pC*cos_thetaC+qC*sin_thetaC,
   y   = y0+pC*sin_thetaC-qC*cos_thetaC,
@@ -125,9 +128,9 @@ rdmchr_C <- tibble(
   yend = y0+pC*sin_thetaC+qC*cos_thetaC
 )
 
-## calculate probability that the chord is longer than a side of the triangle
+## Calculate probability that the chord is longer than a side of the triangle
 
-# Coordinates of random chords
+#coordinates of random chords
 xC    = x0+pC*cos_thetaC+qC*sin_thetaC;
 yC    = y0+pC*sin_thetaC-qC*cos_thetaC;
 xCend = x0+pC*cos_thetaC-qC*sin_thetaC;
@@ -151,7 +154,6 @@ pC <- ggplot() +
   coord_equal()
 
 print(pC)
-
 
 
 ### References..................................................................
