@@ -1,13 +1,8 @@
-### References
-## https://en.wikipedia.org/wiki/Bertrand_paradox_(probability)
-## https://hpaulkeeler.com/the-bertrand-paradox/
-## https://github.com/hpaulkeeler/posts/blob/master/BertrandParadox/BertrandParadox.R
-
 # The value of probabilities of chords  being longer than 
 # the length of the side of equilateral triangle obtained by running the code are:
 # PA = 0.33
-# PB = 0.51
-# PC = 0.24
+# PB = 0.50
+# PC = 0.25
 # However there is a small change in values of probabilities for each running 
 # due to the chords being plotted randomly on the surface of the circle. 
 
@@ -126,7 +121,7 @@ cos_thetaC=cos(thetaC);
 
 rdmchr_C <- tibble(
   x    = x0+pC*cos_thetaC+qC*sin_thetaC,
-  y    = y0+pC*sin_thetaC-qC*cos_thetaC,
+  y   = y0+pC*sin_thetaC-qC*cos_thetaC,
   xend = x0+pC*cos_thetaC-qC*sin_thetaC,
   yend = y0+pC*sin_thetaC+qC*cos_thetaC
 )
@@ -151,8 +146,15 @@ probC=mean(lengthC>lengthSide);
 pC <- ggplot() +
   ggforce::geom_circle(aes(x0 = 0, y0 = 0, r = 1), col = "gray50") +
   geom_segment(data = eqtri_df, aes(x = x, y = y, xend = xend, yend = yend)) +
-  geom_segment(data = rdmchr_B, aes(x = x, y = y, xend = xend, yend = yend),
+  geom_segment(data = rdmchr_C, aes(x = x, y = y, xend = xend, yend = yend),
                col = "red3") +
   coord_equal()
 
 ggsave(pC, file = "plotC.png", height = 5, width = 7)
+
+
+### References
+## https://en.wikipedia.org/wiki/Bertrand_paradox_(probability)
+## https://hpaulkeeler.com/the-bertrand-paradox/
+## https://github.com/hpaulkeeler/posts/blob/master/BertrandParadox/BertrandParadox.R
+## https://www.wikiwand.com/en/Bertrand_paradox_(probability)
