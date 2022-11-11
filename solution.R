@@ -28,14 +28,14 @@ thetaA1=2*pi*runif(numbLines); #choose angular component uniformly
 thetaA2=2*pi*runif(numbLines); #choose angular component uniformly
 
 # Coordinates of random chord
-
 rdmchr_A <- tibble(
   x    = x0+r*cos(thetaA1),
   y    = y0+r*sin(thetaA1),
   xend = x0+r*cos(thetaA2),
   yend = y0+r*sin(thetaA2)
 )
-# calculate probability that the chord is longer than a side of the triangle
+
+## calculate probability that the chord is longer than a side of the triangle
 
 # Coordinates of random chord
 xA    = x0+r*cos(thetaA1);
@@ -52,7 +52,7 @@ lengthA=sqrt((xA-xAend)^2+(yA-yAend)^2);
 #probability of chord being longer than triangle side
 probA=mean(lengthA > lengthSide); 
 
-# Plot A
+## Plot A
 pA <- ggplot() +
   ggforce::geom_circle(aes(x0 = 0, y0 = 0, r = 1), col = "gray50") +
   geom_segment(data = eqtri_df, aes(x = x, y = y, xend = xend, yend = yend)) +
@@ -60,6 +60,7 @@ pA <- ggplot() +
                col = "red3") +
   coord_equal()
 
+#save the plot in files
 ggsave(pA, file = "plotA.png", height = 5, width = 7)
 
 # Method B............................................................................
@@ -81,7 +82,7 @@ rdmchr_B <- tibble(
   yend = y0+pB*sin_thetaB+qB*cos_thetaB
 )
 
-# calculate probability that the chord is longer than a side of the triangle
+## calculate probability that the chord is longer than a side of the triangle
 
 # Coordinates of random chord
 xB    = x0+pB*cos_thetaB+qB*sin_thetaB;
@@ -106,6 +107,7 @@ pB <- ggplot() +
                col = "red3") +
   coord_equal()
 
+#save the plot in files
 ggsave(pB, file = "plotB.png", height = 5, width = 7)
 
 #Method C.............................................................................
@@ -125,7 +127,8 @@ rdmchr_C <- tibble(
   xend = x0+pC*cos_thetaC-qC*sin_thetaC,
   yend = y0+pC*sin_thetaC+qC*cos_thetaC
 )
-# calculate probability that the chord is longer than a side of the triangle
+
+## calculate probability that the chord is longer than a side of the triangle
 
 # Coordinates of random chord
 xC    = x0+pC*cos_thetaC+qC*sin_thetaC;
@@ -150,7 +153,9 @@ pC <- ggplot() +
                col = "red3") +
   coord_equal()
 
+#save the plot in files
 ggsave(pC, file = "plotC.png", height = 5, width = 7)
+
 
 
 ### References
