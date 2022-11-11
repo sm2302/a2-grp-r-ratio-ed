@@ -43,16 +43,19 @@ rdmchr_A <- tibble(
 # calculate probability that the chord is longer than a side of the triangle
 
 # Coordinates of random chord
-xA    = x0+r*cos(thetaA1)
-yA    = y0+r*sin(thetaA1)
-xAend = x0+r*cos(thetaA2)
-yAend = y0+r*sin(thetaA2)
+xA    = x0+r*cos(thetaA1);
+yA    = y0+r*sin(thetaA1);
+xAend = x0+r*cos(thetaA2);
+yAend = y0+r*sin(thetaA2);
+
 #length of triangle side
-lengthSide<-r*sqrt(3) 
+lengthSide<-r*sqrt(3); 
+
 #lengths of the chords
-lengthA=sqrt((xA-xAend)^2+(yA-yAend)^2)
+lengthA=sqrt((xA-xAend)^2+(yA-yAend)^2);
+
 #probability of chord being longer than triangle side
-probA=mean(lengthA>lengthSide) 
+probA=mean(lengthA > lengthSide); 
 
 # Plot A
 pA <- ggplot() +
@@ -66,13 +69,13 @@ ggsave(pA, file = "plotA.png", height = 5, width = 7)
 
 # Method B............................................................................
 
-thetaB=2*pi*runif(numbLines) #choose angular component uniformly
-pB=r*runif(numbLines) #choose radial component uniformly
-qB=sqrt(r^2-pB^2) #distance to circle edge (along line)
+thetaB=2*pi*runif(numbLines); #choose angular component uniformly
+pB=r*runif(numbLines); #choose radial component uniformly
+qB=sqrt(r^2-pB^2); #distance to circle edge (along line)
 
 #calculate trig values
-sin_thetaB=sin(thetaB)
-cos_thetaB=cos(thetaB)
+sin_thetaB=sin(thetaB);
+cos_thetaB=cos(thetaB);
 
 # Coordinates of random chord
 
@@ -86,16 +89,20 @@ rdmchr_B <- tibble(
 # calculate probability that the chord is longer than a side of the triangle
 
 # Coordinates of random chord
-xB    = x0+pB*cos_thetaB+qB*sin_thetaB
-yB    = y0+pB*sin_thetaB-qB*cos_thetaB
-xBend = x0+pB*cos_thetaB-qB*sin_thetaB
-yBend = y0+pB*sin_thetaB+qB*cos_thetaB
+xB    = x0+pB*cos_thetaB+qB*sin_thetaB;
+yB    = y0+pB*sin_thetaB-qB*cos_thetaB;
+xBend = x0+pB*cos_thetaB-qB*sin_thetaB;
+yBend = y0+pB*sin_thetaB+qB*cos_thetaB;
+
 #length of triangle side
-lengthSide<-r*sqrt(3)
+lengthSide<-r*sqrt(3);
+
 #lengths of the chords
-lengthB=sqrt((xB-xBend)^2+(yB-yBend)^2)
+lengthB=sqrt((xB-xBend)^2+(yB-yBend)^2);
+
 #probability of chord being longer than triangle side
-probB=mean(lengthB>lengthSide)
+probB=mean(lengthB>lengthSide);
+
 # Plot B
 pB <- ggplot() +
   ggforce::geom_circle(aes(x0 = 0, y0 = 0, r = 1), col = "gray50") +
@@ -108,13 +115,13 @@ ggsave(pB, file = "plotB.png", height = 5, width = 7)
 
 #Method C.............................................................................
 
-thetaC=2*pi*runif(numbLines) #choose angular component uniformly
-pC=r*sqrt(runif(numbLines)) #choose radial component
-qC=sqrt(r^2-pC^2) #distance to circle edge (along line)
+thetaC=2*pi*runif(numbLines); #choose angular component uniformly
+pC=r*sqrt(runif(numbLines)); #choose radial component
+qC=sqrt(r^2-pC^2); #distance to circle edge (along line)
 
 #calculate trig values
-sin_thetaC=sin(thetaC)
-cos_thetaC=cos(thetaC)
+sin_thetaC=sin(thetaC);
+cos_thetaC=cos(thetaC);
 # Coordinates of random chord
 
 rdmchr_C <- tibble(
@@ -126,16 +133,19 @@ rdmchr_C <- tibble(
 # calculate probability that the chord is longer than a side of the triangle
 
 # Coordinates of random chord
-xC    = x0+pC*cos_thetaC+qC*sin_thetaC
-yC    = y0+pC*sin_thetaC-qC*cos_thetaC
-xCend = x0+pC*cos_thetaC-qC*sin_thetaC
-yCend = y0+pC*sin_thetaC+qC*cos_thetaC
+xC    = x0+pC*cos_thetaC+qC*sin_thetaC;
+yC    = y0+pC*sin_thetaC-qC*cos_thetaC;
+xCend = x0+pC*cos_thetaC-qC*sin_thetaC;
+yCend = y0+pC*sin_thetaC+qC*cos_thetaC;
+
 #length of triangle side
-lengthSide<-r*sqrt(3)
+lengthSide<-r*sqrt(3);
+
 #lengths of the chords
-lengthC=sqrt((xC-xCend)^2+(yC-yCend)^2)
+lengthC=sqrt((xC-xCend)^2+(yC-yCend)^2);
+
 #probability of chord being longer than triangle side
-probC=mean(lengthC>lengthSide)
+probC=mean(lengthC>lengthSide);
 
 # Plot C
 pC <- ggplot() +
