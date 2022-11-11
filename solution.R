@@ -55,13 +55,12 @@ probA=mean(lengthA > lengthSide);
 ## Plot A
 pA <- ggplot() +
   ggforce::geom_circle(aes(x0 = 0, y0 = 0, r = 1), col = "gray50") +
-  geom_segment(data = eqtri_df, aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_segment(data = eqtri_df, aes(x = x, y = y, xend = xend, yend = yend), col = "blue") +
   geom_segment(data = rdmchr_A, aes(x = x, y = y, xend = xend, yend = yend),
                col = "red3") +
   coord_equal()
 
-#save the plot in files
-ggsave(pA, file = "plotA.png", height = 5, width = 7)
+print(pA)
 
 # Method B............................................................................
 
@@ -102,13 +101,12 @@ probB=mean(lengthB>lengthSide);
 # Plot B
 pB <- ggplot() +
   ggforce::geom_circle(aes(x0 = 0, y0 = 0, r = 1), col = "gray50") +
-  geom_segment(data = eqtri_df, aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_segment(data = eqtri_df, aes(x = x, y = y, xend = xend, yend = yend), col = "blue") +
   geom_segment(data = rdmchr_B, aes(x = x, y = y, xend = xend, yend = yend),
                col = "red3") +
   coord_equal()
 
-#save the plot in files
-ggsave(pB, file = "plotB.png", height = 5, width = 7)
+print(pB)
 
 #Method C.............................................................................
 
@@ -148,13 +146,12 @@ probC=mean(lengthC>lengthSide);
 # Plot C
 pC <- ggplot() +
   ggforce::geom_circle(aes(x0 = 0, y0 = 0, r = 1), col = "gray50") +
-  geom_segment(data = eqtri_df, aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_segment(data = eqtri_df, aes(x = x, y = y, xend = xend, yend = yend), col = "blue") +
   geom_segment(data = rdmchr_C, aes(x = x, y = y, xend = xend, yend = yend),
                col = "red3") +
   coord_equal()
 
-#save the plot in files
-ggsave(pC, file = "plotC.png", height = 5, width = 7)
+print(pC)
 
 
 
